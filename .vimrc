@@ -1,3 +1,41 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'Valloric/YouCompleteMe'  "Automcompletion
+Plugin 'tpope/vim-fugitive'   "Git stuff
+Plugin 'kien/ctrlp.vim'  "opening stuff
+Plugin 'nvie/vim-flake8'  "linting
+Plugin 'vim-airline/vim-airline' "that bar in the bottom
+Plugin 'scrooloose/nerdtree'  "tree view
+Plugin 'jmcantrell/vim-virtualenv'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
 set wildmode=list:longest
 set wildignore=*.pyc,__pycache_,node_modules/*,bower_components/*
 set ts=4
@@ -22,9 +60,6 @@ set foldlevel=99
 
 highlight RedundantSpaces term=standout ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t/
-
-" pathogen!
-execute pathogen#infect()
 
 " Enable solarized after pathogen, because of pluginloading
 if !exists('colours')
