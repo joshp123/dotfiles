@@ -19,3 +19,5 @@ iterm2_print_user_vars() {
 }
 
 export TERM="xterm-256color"
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
