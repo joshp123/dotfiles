@@ -21,6 +21,7 @@ Plugin 'vim-airline/vim-airline' "that bar in the bottom
 Plugin 'scrooloose/nerdtree'  "tree view
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'airblade/vim-gitgutter'  " vim on the side
+Plugin 'tomasr/molokai'  "theme
 
 
 " All of your Plugins must be added before the following line
