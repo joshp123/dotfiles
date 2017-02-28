@@ -1,0 +1,15 @@
+# This is Git's per-user configuration file.
+[core]
+# Please adapt and uncomment the following lines:
+	user = Josh Palmer
+	email = josh@joshpalmer.co.uk
+	editor = /usr/bin/vim
+[user]
+	name = Josh Palmer
+	email = josh@getbynder.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[push]
+	default = simple
