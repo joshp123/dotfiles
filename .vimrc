@@ -15,7 +15,7 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'Valloric/YouCompleteMe'  "Automcompletion
 Plugin 'tpope/vim-fugitive'   "Git stuff
-Plugin 'kien/ctrlp.vim'  "opening stuff
+Plugin 'ctrlpvim/ctrlp.vim'  "opening stuff
 Plugin 'nvie/vim-flake8'  "linting
 Plugin 'vim-airline/vim-airline' "that bar in the bottom
 Plugin 'vim-airline/vim-airline-themes' "that bar in the bottom
