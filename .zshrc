@@ -21,3 +21,24 @@ iterm2_print_user_vars() {
 export TERM="xterm-256color"
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+if [ "$HOST" = 'josh-spa' ]
+then
+    tmux_sessions=`tmux ls` &> /dev/null
+
+    if [ "$?" -ne 0 ]
+    then
+        ./pserve.sh
+        ./dev_env.sh
+    fi
+fi
+
+# if [ echo $tmux_sessions | grep dev &> /dev/null -eq 1 ]
+# then
+#     ./dev_env.sh
+# fi
+#
+# if [ echo $tmux_sessions | grep spa_backend &> /dev/null -eq 1 ]
+# then
+#     ./pserve.sh
+# fi
