@@ -23,6 +23,8 @@ Plugin 'scrooloose/nerdtree'  "tree view
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'airblade/vim-gitgutter'  " vim on the side
 Plugin 'tomasr/molokai'  "theme
+Plugin 'neomake/neomake'  "some async make thing
+Plugin 'dojoteef/neomake-autolint'   "aasync linting
 
 
 " All of your Plugins must be added before the following line
@@ -40,6 +42,8 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+set autoindent
+set smartindent
 set encoding=utf-8
 set wildmode=list:longest
 set wildignore=*.pyc,__pycache_,node_modules/*,bower_components/*
@@ -87,6 +91,7 @@ autocmd BufNewFile,BufRead *.cfm set noexpandtab
 
 nmap <F6> :TagbarToggle<CR>
 
+" airline
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
@@ -95,3 +100,31 @@ nnoremap <C-n> :bnext<CR>
 
 let g:ctrlp_custom_ignore = {'dir': '\v[\/](\.(git|hg|svn|dist)|node_modules|bower_components|WEB-INF|build|dist)$' }
 let g:ctrlp_working_path_mode = 0
+
+" gitgutter
+let g:gitgutter_sign_column_always = 1
+
+" Neomake autolinting stuff
+let g:neomake_autolint_sign_column_always =1
+
+let g:neomake_warning_sign = {
+  \ 'text': '?',
+  \ 'texthl': 'ErrorMsg',
+  \ }
+let g:neomake_error_sign = {
+  \ 'text': '!',
+  \ 'texthl': 'ErrorMsg',
+  \ }
+
+let g:neomake_python_flake8_maker = {
+    \ 'args': ['--format=default'],
+    \ 'errorformat':
+        \ '%E%f:%l: could not compile,%-Z%p^,' .
+        \ '%A%f:%l:%c: %t%n %m,' .
+        \ '%A%f:%l: %t%n %m,' .
+        \ '%-G%.%#',
+    \ }
+
+let g:neomake_python_enabled_makers = ['flake8', 'pylint', 'mypy']
+
+autocmd! BufReadPost,BufWritePost * Neomake
