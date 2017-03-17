@@ -18,6 +18,7 @@ Plugin 'tpope/vim-fugitive'   "Git stuff
 Plugin 'kien/ctrlp.vim'  "opening stuff
 Plugin 'nvie/vim-flake8'  "linting
 Plugin 'vim-airline/vim-airline' "that bar in the bottom
+Plugin 'vim-airline/vim-airline-themes' "that bar in the bottom
 Plugin 'scrooloose/nerdtree'  "tree view
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'airblade/vim-gitgutter'  " vim on the side
