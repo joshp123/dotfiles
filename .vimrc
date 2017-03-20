@@ -129,4 +129,4 @@ let g:neomake_python_mypy_args = ['--ignore-missing-imports', '--follow-import=s
 
 let g:neomake_python_enabled_makers = ['flake8', 'pylint', 'mypy']
 
-autocmd! BufReadPost,BufWritePost * Neomake
+" autocmd! BufReadPost,BufWritePost * Neomake
