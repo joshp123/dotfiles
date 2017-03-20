@@ -42,3 +42,5 @@ fi
 # then
 #     ./pserve.sh
 # fi
+# 
+# alias vim=nvim
