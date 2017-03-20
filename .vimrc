@@ -116,14 +116,16 @@ let g:neomake_error_sign = {
   \ 'texthl': 'ErrorMsg',
   \ }
 
-let g:neomake_python_flake8_maker = {
-    \ 'args': ['--format=default'],
-    \ 'errorformat':
-        \ '%E%f:%l: could not compile,%-Z%p^,' .
-        \ '%A%f:%l:%c: %t%n %m,' .
-        \ '%A%f:%l: %t%n %m,' .
-        \ '%-G%.%#',
-    \ }
+" let g:neomake_python_flake8_maker = {
+"     \ 'args': ['--format=default'],
+"     \ 'errorformat':
+"         \ '%E%f:%l: could not compile,%-Z%p^,' .
+"         \ '%A%f:%l:%c: %t%n %m,' .
+"         \ '%A%f:%l: %t%n %m,' .
+"         \ '%-G%.%#',
+"     \ }
+
+let g:neomake_python_mypy_args = ['--ignore-missing-imports', '--follow-import=skip']
 
 let g:neomake_python_enabled_makers = ['flake8', 'pylint', 'mypy']
 
