@@ -17,3 +17,7 @@ Or if `~` is not empty:
 Then to clone necessary repos, set up `zsh` etc:
 
 `./config_setup.sh`
+
+Don't forget to also run `:Plugin Install` on the first run of vim.
+
+TODO: alias vim -> nvim? pip install neovim plugin (pip2/pip3)
