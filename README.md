@@ -10,7 +10,7 @@ git clone --separate-git-dir=~/.myconf git@github.com:joshp123/dotfiles.git ~
 Or if `~` is not empty:
 
     git clone --separate-git-dir=$HOME/.myconf git@github.com:joshp123/dotfiles.git $HOME/myconf-tmp
-    cp ~/myconf-tmp/.gitmodules ~  # If you use Git submodules
+    ## cp ~/myconf-tmp/.gitmodules ~  # If you use Git submodules
     rm -r ~/myconf-tmp/
     alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
  
