@@ -97,6 +97,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 nnoremap <C-n> :bnext<CR>
 :map <F5> :%! python -mjson.tool<CR>
+:map <F6> :vertical resize 90<CR>
 
 let g:ctrlp_custom_ignore = {'dir': '\v[\/](\.(git|hg|svn|dist)|node_modules|bower_components|WEB-INF|build|dist)$' }
 let g:ctrlp_working_path_mode = 0
@@ -130,3 +131,7 @@ let g:neomake_python_mypy_args = ['--ignore-missing-imports', '--follow-import=s
 let g:neomake_python_enabled_makers = ['flake8', 'pylint', 'mypy']
 
 " autocmd! BufReadPost,BufWritePost * Neomake
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
