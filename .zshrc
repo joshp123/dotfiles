@@ -44,3 +44,8 @@ fi
 # fi
 # 
 # alias vim=nvim
+
+export EDITOR=vim
+
+# 10ms for key sequences
+KEYTIMEOUT=1
