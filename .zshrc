@@ -49,3 +49,5 @@ export EDITOR=vim
 
 # 10ms for key sequences
 KEYTIMEOUT=1
+
+alias current_branch='git branch | grep "*" | sed  "s/* //"'
