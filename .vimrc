@@ -135,3 +135,5 @@ augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
+
+set timeoutlen=10 ttimeoutlen=0
