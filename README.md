@@ -12,6 +12,7 @@ Or if `~` is not empty:
     git clone --separate-git-dir=$HOME/.myconf git@github.com:joshp123/dotfiles.git $HOME/myconf-tmp
     rm -r ~/myconf-tmp/
     alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
+    config checkout -f
  
 Then to clone necessary repos, set up `zsh` etc:
 
