@@ -20,8 +20,6 @@ iterm2_print_user_vars() {
 
 export TERM="xterm-256color"
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 if [ "$HOST" = 'josh-spa' ]
 then
     tmux_sessions=`tmux ls` &> /dev/null
