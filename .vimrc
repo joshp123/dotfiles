@@ -13,7 +13,6 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'Valloric/YouCompleteMe'  "Automcompletion
 Plugin 'tpope/vim-fugitive'   "Git stuff
 Plugin 'ctrlpvim/ctrlp.vim'  "opening stuff
 Plugin 'nvie/vim-flake8'  "linting
@@ -103,7 +102,7 @@ let g:ctrlp_custom_ignore = {'dir': '\v[\/](\.(git|hg|svn|dist)|node_modules|bow
 let g:ctrlp_working_path_mode = 0
 
 " gitgutter
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 
 " Neomake autolinting stuff
 let g:neomake_autolint_sign_column_always =1
