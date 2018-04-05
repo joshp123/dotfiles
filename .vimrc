@@ -22,8 +22,10 @@ Plugin 'scrooloose/nerdtree'  "tree view
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'airblade/vim-gitgutter'  " vim on the side
 Plugin 'tomasr/molokai'  "theme
-Plugin 'neomake/neomake'  "some async make thing
-Plugin 'dojoteef/neomake-autolint'   "aasync linting
+" Plugin 'neomake/neomake'  "some async make thing
+" Plugin 'dojoteef/neomake-autolint'   "aasync linting
+Plugin 'Yggdroot/indentLine'  " show indentation with lines
+Plugin 'fatih/vim-go'
 
 
 " All of your Plugins must be added before the following line
@@ -101,9 +103,6 @@ nnoremap <C-n> :bnext<CR>
 let g:ctrlp_custom_ignore = {'dir': '\v[\/](\.(git|hg|svn|dist)|node_modules|bower_components|WEB-INF|build|dist)$' }
 let g:ctrlp_working_path_mode = 0
 
-" gitgutter
-set signcolumn=yes
-
 " Neomake autolinting stuff
 let g:neomake_autolint_sign_column_always =1
 
@@ -136,3 +135,8 @@ augroup reload_vimrc " {
 augroup END " }
 
 set timeoutlen=10 ttimeoutlen=0
+
+" get rid of backspace fuckery
+:set backspace=indent,eol,start
+
+set clipboard=unnamed
