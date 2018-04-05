@@ -1,5 +1,7 @@
 alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 
+export LANG=en_US.UTF-8
+
 #
 # User configuration sourced by interactive shells
 #
@@ -49,3 +51,53 @@ export EDITOR=vim
 KEYTIMEOUT=1
 
 alias current_branch='git branch | grep "*" | sed  "s/* //"'
+
+
+eval "$(pyenv init -)"
+# if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+eval "$(pyenv virtualenv-init -)"
+
+# For SSH Host Completion - Zsh Style
+# use ~/code/puppy/allemaal, ~/.ssh/known_hosts and /etc/hosts for hostname completion
+[ -r ~/code/puppy/allemaal ] && _mx_hosts=($(<$HOME/code/puppy/allemaal)) || _mx_hosts=()
+[ -r ~/.ssh/known_hosts ] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
+[ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
+hosts=(
+  "$_mx_hosts[@]"
+  "$_ssh_hosts[@]"
+  "$_etc_hosts[@]"
+  `hostname`
+  localhost
+)
+zstyle ':completion:*:hosts' hosts $hosts
+
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/go/bin/
+export GOPATH=~/go
+
+export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/Josh/code/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/Josh/code/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/Josh/code/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/Josh/code/google-cloud-sdk/completion.zsh.inc'; fi
+
+export GIT_AUTHOR_NAME="Josh Palmer"
+export GIT_AUTHOR_EMAIL="Josh.Palmer@mendix.com"
+export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# Load rbenv automatically by appending
+# the following to ~/.zshrc:
+
+eval "$(rbenv init -)"
+
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+
+cd ~/code/
+
