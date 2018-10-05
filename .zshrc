@@ -99,5 +99,7 @@ export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
 
-cd ~/code/
+alias cp_logs_test='ssh -t  tr10000@appnode-scherzo.cloud.xs4.mendix.net "cd /srv/cloud/logs/tr10000/ && less +F runtime.log; bash -i"'
+alias cp_logs_prod='ssh -t  tr10000@appnode-prostitute.cloud.xs4.mendix.net "cd /srv/cloud/logs/tr10000/ && less +F runtime.log; bash -i"'
 
+cd ~/code/
