@@ -4,6 +4,7 @@
 	user = Josh Palmer
 	email = josh@joshpalmer.co.uk
 	editor = vim
+	excludesfile = /Users/Josh/.gitignore_global
 [user]
 	name = Josh Palmer
 	email = Josh.Palmer@mendix.com
