@@ -27,6 +27,11 @@ Plugin 'tomasr/molokai'  "theme
 Plugin 'Yggdroot/indentLine'  " show indentation with lines
 Plugin 'fatih/vim-go'
 
+Plugin 'hashivim/vim-terraform'
+
+Plugin 'ambv/black'
+
+Plugin 'jamessan/vim-gnupg'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -96,6 +101,8 @@ nmap <F6> :TagbarToggle<CR>
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
+let g:terraform_fmt_on_save = 1
+
 nnoremap <C-n> :bnext<CR>
 :map <F5> :%! python -mjson.tool<CR>
 :map <F6> :vertical resize 90<CR>
@@ -127,6 +134,9 @@ let g:neomake_error_sign = {
 let g:neomake_python_mypy_args = ['--ignore-missing-imports', '--follow-import=skip']
 
 let g:neomake_python_enabled_makers = ['flake8', 'pylint', 'mypy']
+
+let g:black_linelength = 79
+autocmd BufWritePre *.py execute ':Black'
 
 " autocmd! BufReadPost,BufWritePost * Neomake
 augroup reload_vimrc " {
