@@ -101,5 +101,19 @@ eval "$(goenv init -)"
 
 alias cp_logs_test='ssh -t  tr10000@appnode-scherzo.cloud.xs4.mendix.net "cd /srv/cloud/logs/tr10000/ && less +F runtime.log; bash -i"'
 alias cp_logs_prod='ssh -t  tr10000@appnode-prostitute.cloud.xs4.mendix.net "cd /srv/cloud/logs/tr10000/ && less +F runtime.log; bash -i"'
+alias test_urlsign='java -jar ~/code/urlsign/target/urlsign-full-1.0-SNAPSHOT.jar ~/code/urlsign/test_key'
+
+launch_aws_workspace() {
+    aws workspaces describe-workspaces | \
+        jq '.Workspaces[] | select(.UserName=="josh").WorkspaceId' | \
+        xargs -I % aws workspaces start-workspaces --cli-input-json \
+            "$(aws workspaces start-workspaces --generate-cli-skeleton  | sed 's/\"\"/\"%\"/')"
+    until aws workspaces describe-workspaces | jq '.Workspaces[] | select(.UserName=="josh").State' | grep -m 1 "AVAILABLE"; do : ; done
+    aws workspaces describe-workspaces | \
+        jq '.Workspaces[] | select(.UserName=="josh").IpAddress' | \
+        xargs -I % aws ec2 describe-network-interfaces --filters Name=addresses.private-ip-address,Values=% | \
+        jq '.NetworkInterfaces[].Association.PublicIp' | \
+        xargs -I {} osascript -e 'tell app "System Events" to display dialog "Workspace launched with IP {}"'
+}
 
 cd ~/code/
