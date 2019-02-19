@@ -117,3 +117,9 @@ launch_aws_workspace() {
 }
 
 cd ~/code/
+
+# https://github.com/pindexis/marker
+[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+
+# https://github.com/nvbn/thefuck
+eval $(thefuck --alias)
