@@ -33,6 +33,10 @@ Plugin 'ambv/black'
 
 Plugin 'jamessan/vim-gnupg'
 
+Plugin 'mbbill/undotree'
+
+Plugin 'rizzatti/dash.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -53,11 +57,9 @@ set smartindent
 set encoding=utf-8
 set wildmode=list:longest
 set wildignore=*.pyc,__pycache_,node_modules/*,bower_components/*
-set ts=4
-set sw=4
-set ls=2
-set ai
-set si
+set tabstop=4
+set shiftwidth=4
+set laststatus=2  " wtf does this do?
 set incsearch
 set expandtab
 set number
@@ -66,7 +68,7 @@ set ruler
 syntax on
 set colorcolumn=80
 set guioptions=egmt
-set so=5
+set scrolloff=20
 set lcs=tab:>-,trail:-
 set list
 
@@ -94,6 +96,7 @@ autocmd BufNewFile,BufRead *.mako set filetype=html
 autocmd BufNewFile,BufRead *.cfc set noexpandtab
 autocmd BufNewFile,BufRead *.cfc set nolist
 autocmd BufNewFile,BufRead *.cfm set noexpandtab
+autocmd FileType yaml set tabstop=2 shiftwidth=2
 
 nmap <F6> :TagbarToggle<CR>
 
@@ -144,9 +147,13 @@ augroup reload_vimrc " {
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
-set timeoutlen=10 ttimeoutlen=0
+set timeoutlen=300 ttimeoutlen=0
 
 " get rid of backspace fuckery
 :set backspace=indent,eol,start
 
 set clipboard=unnamed
+
+set showcmd
+let g:dash_activate=0
+:nmap <leader>d <Plug>DashSearch
