@@ -104,6 +104,7 @@ alias cp_logs_prod='ssh -t  tr10000@appnode-prostitute.cloud.xs4.mendix.net "cd 
 alias test_urlsign='java -jar ~/code/urlsign/target/urlsign-full-1.0-SNAPSHOT.jar ~/code/urlsign/test_key'
 
 launch_aws_workspace() {
+    export AWS_DEFAULT_REGION=eu-west-1
     aws workspaces describe-workspaces | \
         jq '.Workspaces[] | select(.UserName=="josh").WorkspaceId' | \
         xargs -I % aws workspaces start-workspaces --cli-input-json \
@@ -116,10 +117,41 @@ launch_aws_workspace() {
         xargs -I {} osascript -e 'tell app "System Events" to display dialog "Workspace launched with IP {}"'
 }
 
+all_cf ()
+{
+    for cluster in `cf targets | grep -v nonprod |  sed -e "s/(current, modified)//g"`;
+    do
+        echo "Targeting ${cluster}"
+        cf set-target -f $cluster;
+        cf t -o prod -s services;
+        $*;
+    done
+}
+
 cd ~/code/
 
 # https://github.com/pindexis/marker
-[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+# [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+# export MARKER_KEY_MARK=-\C-g
+# export MARKER_KEY_NEXT_PLACEHOLDER=\C-qq
 
 # https://github.com/nvbn/thefuck
 eval $(thefuck --alias)
+
+eval "$(jira --completion-script-zsh)"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/Cellar/terraform/0.11.11/bin/terraform terraform
+alias clean_terra="find . -type d -name .terraform | xargs rm -r"
+
+alias unsafe_terraform_12=/usr/local/bin/terraform_12
+alias terraform_12='if terraform_12 workspace show | grep "default"; then echo "Use correct workspace $1" && return 1; fi; terraform_12'
+alias tf12=terraform_12
+
+iterm2_print_user_vars() {
+  iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
+  iterm2_set_user_var cwd $(pwd)
+  iterm2_set_user_var tf_workspace $(terraform_12 workspace show)
+}
+alias cd_books="cd /Users/Josh/Library/Mobile\ Documents/com~apple~CloudDocs/Books"
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
