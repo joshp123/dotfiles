@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" let mapleader ='\\'
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -29,13 +31,19 @@ Plugin 'fatih/vim-go'
 
 Plugin 'hashivim/vim-terraform'
 
-Plugin 'ambv/black'
+Plugin 'psf/black'
 
 Plugin 'jamessan/vim-gnupg'
 
 Plugin 'mbbill/undotree'
 
 Plugin 'rizzatti/dash.vim'
+
+Plugin 'dense-analysis/ale'
+
+Plugin 'vim/killersheep'
+
+Plugin 'martinda/Jenkinsfile-vim-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -79,14 +87,13 @@ highlight RedundantSpaces term=standout ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t/
 
 " Enable solarized after pathogen, because of pluginloading
-if !exists('colours')
-    colorscheme molokai
-    set bg=dark
-endif
+"if !exists('colours')
+    "colorscheme molokai
+    "set bg=dark
+"endif
 
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
 
-set bg=dark
 
 " Clearly this only works with airline enabled with powerline fonts
 let g:airline_powerline_fonts = 1
@@ -147,7 +154,7 @@ augroup reload_vimrc " {
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
-set timeoutlen=300 ttimeoutlen=0
+set timeoutlen=500 ttimeoutlen=0
 
 " get rid of backspace fuckery
 :set backspace=indent,eol,start
@@ -157,3 +164,5 @@ set clipboard=unnamed
 set showcmd
 let g:dash_activate=0
 :nmap <leader>d <Plug>DashSearch
+
+colorscheme zellner
