@@ -6,7 +6,7 @@
 	editor = /usr/bin/vim
 [user]
 	name = Josh Palmer
-	email = josh@getbynder.com
+	email = josh.palmer@mendix.com
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
