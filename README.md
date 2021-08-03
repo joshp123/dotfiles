@@ -27,6 +27,7 @@ TODO:
 
 ## New MacBook setup
 - Sign in to iCloud etc
+- Sign in to work calendar
 - Config:
     - Enable 3 finger drag in accessibility -> motor -> pointer control -> trackpad controls
     - Disable spelling suggestions, smart quotes, etc
