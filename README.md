@@ -33,11 +33,13 @@ TODO:
     - Disable spelling suggestions, smart quotes, etc
     - Change region to UK but with customizations (Euro as currency, Metric units)
     - Enable Apple Watch unlock
+    - Disable Telegram, iMessage, Outlook etc alert sounds
  
 - Install:
     - Meeter
     - iTerm
     - Homebrew
     - Zim
+    - Telegram
 
 - Sign in to iCloud etc
